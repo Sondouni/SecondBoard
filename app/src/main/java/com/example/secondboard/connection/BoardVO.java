@@ -1,6 +1,8 @@
 package com.example.secondboard.connection;
 
-public class BoardVO {
+import java.io.Serializable;
+
+public class BoardVO implements Serializable {
     private int iboard;
     private String title;
     private String ctnt;

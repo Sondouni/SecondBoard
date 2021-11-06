@@ -10,8 +10,13 @@
     <string name="write">write</string>
     <string name="search">search</string>
     <string name="newBoard">New Board</string>
-
-
+    <string name="Cancel">Cancel</string>
+    <string name="Delete">Delete</string>
+    <string name="Change">Change</string>
+    <string name="Back">Back</string>
+    <string name="msg_fial">Connection Error</string>
+    <string name="okay">okay</string>
+    <string name="num">PostNumber</string>
 
 
     <string name="title_activity_write">WriteActivity</string>

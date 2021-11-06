@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchActivity">
+
+
+    <Spinner
+        android:id="@+id/spinS"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/border2"
+        android:spinnerMode="dropdown"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edSearch"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/spinS"
+        app:layout_constraintTop_toTopOf="@+id/spinS" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinS" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:gravity="bottom"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/handmade"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="350dp"
+        android:background="@color/my"
+        android:textSize="10sp"
+        android:text="@string/Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvList" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnWrite"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="97dp"
+        android:textSize="10sp"
+        android:background="@color/my"
+        android:text="@string/write"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSearch"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:background="@color/my"
+        android:text="@string/search"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinS"
+        app:layout_constraintStart_toEndOf="@+id/edSearch" />
+</androidx.constraintlayout.widget.ConstraintLayout>

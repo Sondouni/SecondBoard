@@ -9,7 +9,7 @@ public class RetrofitSV {
     public static BoardService getConnect(){
         if(rt==null){
             rt = new Retrofit.Builder()
-                    .baseUrl("http://192.168.3.52:8090/")
+                    .baseUrl("http://172.30.1.17:8090/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
             bs = rt.create(BoardService.class);

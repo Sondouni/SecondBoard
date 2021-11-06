@@ -34,6 +34,10 @@ public class BoardMainActivity extends AppCompatActivity {
         rvList.setAdapter(adp);
         network();
     }
+    public void onStart(){
+        super.onStart();
+        network();
+    }
     public void clkWrite(View v){
         Intent intent = new Intent(this,BoardWriteActivity.class);
         startActivity(intent);
@@ -56,6 +60,10 @@ public class BoardMainActivity extends AppCompatActivity {
             }
         });
     }
+    public void clkSearch(View v){
+        Intent intent = new Intent(this,SearchActivity.class);
+        startActivity(intent);
+    }
 }
 class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.MyViewHolder>{
     private List<BoardVO> list;
@@ -68,7 +76,19 @@ class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.setItem(list.get(position));
+        holder.setItem(list.get(position),list.size()-position);
+
+        BoardVO vo = list.get(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),IntotheBoardActivity.class);
+                intent.putExtra("BoardVO",vo);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -85,8 +105,8 @@ class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.MyViewHolder>{
             tvWriter = v.findViewById(R.id.tvWriter);
             tvRDT = v.findViewById(R.id.tvRDT);
         }
-        public void setItem(BoardVO param){
-            tvIboard.setText(String.valueOf(param.getIboard()));
+        public void setItem(BoardVO param,int position){
+            tvIboard.setText(String.valueOf(position));
             tvTitle.setText(param.getTitle());
             tvWriter.setText(param.getWriter());
             tvRDT.setText(param.getRdt());
