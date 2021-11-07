@@ -12,6 +12,10 @@ import retrofit2.http.Query;
 public interface BoardService {
     @GET("list")
     Call<List<BoardVO>> selectList();
+
+    @GET("list")
+    Call<List<BoardVO>> selectList(@Query("search") String search,@Query("value") String value);
+
     @POST("ins")
     Call<Void> insBoard(@Body BoardVO vo);
     @POST("ins")

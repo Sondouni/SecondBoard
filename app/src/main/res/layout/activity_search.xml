@@ -23,20 +23,22 @@
     <EditText
         android:id="@+id/edSearch"
         android:layout_width="180dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinS"
         app:layout_constraintStart_toEndOf="@+id/spinS"
         app:layout_constraintTop_toTopOf="@+id/spinS" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinS" />
@@ -58,10 +60,10 @@
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="50dp"
         android:background="@color/my"
-        android:textSize="10sp"
         android:text="@string/Back"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvList" />
 
