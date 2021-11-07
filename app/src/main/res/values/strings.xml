@@ -17,6 +17,7 @@
     <string name="msg_fial">Connection Error</string>
     <string name="okay">okay</string>
     <string name="num">PostNumber</string>
+    <string name="like">Like</string>
 
 
     <string name="title_activity_write">WriteActivity</string>

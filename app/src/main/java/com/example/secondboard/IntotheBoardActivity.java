@@ -26,9 +26,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class IntotheBoardActivity extends AppCompatActivity {
-    TextView tvTitle,tvCtnt,tvWriter,tvRDT;
+    TextView tvTitle,tvCtnt,tvWriter,tvRDT,txlikeNum;
     EditText edTitle,edCtnt,edWriter,edRDT;
-    Button btnChange,btnDel,btnBack,btnOkay;
+    Button btnChange,btnDel,btnBack,btnOkay,btnLike,BtnDlike;
     ConstraintLayout ly1,ly2;
     private int iboard;
     @Override
@@ -48,9 +48,13 @@ public class IntotheBoardActivity extends AppCompatActivity {
         edWriter = findViewById(R.id.edWriter);
         edRDT = findViewById(R.id.edRDT);
         btnOkay = findViewById(R.id.btnOkay);
+        btnLike = findViewById(R.id.btnLike);
+        BtnDlike = findViewById(R.id.BtnDlike);
+        txlikeNum = findViewById(R.id.txlikeNum);
+
         ly1 = findViewById(R.id.ly1);
         ly2 = findViewById(R.id.ly2);
-
+        /*
         Intent intent = getIntent();
         BoardVO vo = (BoardVO)intent.getSerializableExtra("BoardVO");
         iboard = vo.getIboard();
@@ -58,6 +62,30 @@ public class IntotheBoardActivity extends AppCompatActivity {
         tvCtnt.setText(vo.getCtnt());
         tvWriter.setText(vo.getWriter());
         tvRDT.setText(vo.getRdt());
+        txlikeNum.setText(vo.getHeart()+"");
+
+
+         */
+
+        Intent intent = getIntent();
+        BoardVO vo = (BoardVO)intent.getSerializableExtra("BoardVO");
+        iboard = vo.getIboard();
+        oneShow(iboard);
+
+
+
+        btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clkHeart(iboard,v);
+            }
+        });
+        BtnDlike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clkHeart(iboard,v);
+            }
+        });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +128,6 @@ public class IntotheBoardActivity extends AppCompatActivity {
                 edCtnt.setText(tvCtnt.getText().toString());
                 edWriter.setText(tvWriter.getText().toString());
                 edRDT.setText(getTime());
-                Log.i("myLog",getTime());
                 btnOkay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -109,11 +136,20 @@ public class IntotheBoardActivity extends AppCompatActivity {
                         vo.setWriter(edWriter.getText().toString());
                         vo.setCtnt(edCtnt.getText().toString());
                         vo.setRdt(edRDT.getText().toString());
+                        vo.setHeart(Integer.parseInt(txlikeNum.getText().toString()));
                         vo.setIboard(iboard);
                         RetrofitSV.getConnect().updBoard(vo).enqueue(new Callback<Void>() {
                             @Override
                             public void onResponse(Call<Void> call, Response<Void> response) {
-
+                                //질문 눌럿을때 바로 새로통신을 하는 oneShow를 했는데, 첫번째에 안나오고 두번째에 나왓다.
+                                //이건 비동기 상황에서 레이아웃이 전환되는것보다 늦어서 생기는 일인가??
+                                if(response.isSuccessful()){
+                                    tvTitle.setText(vo.getTitle());
+                                    tvWriter.setText(vo.getWriter());
+                                    tvCtnt.setText(vo.getCtnt());
+                                    tvTitle.setText(vo.getTitle());
+                                    txlikeNum.setText(vo.getHeart()+"");
+                                }
                             }
 
                             @Override
@@ -123,7 +159,6 @@ public class IntotheBoardActivity extends AppCompatActivity {
                         });
                         ly2.setVisibility(View.GONE);
                         ly1.setVisibility(View.VISIBLE);
-                        oneShow(iboard);
                     }
                 });
             }
@@ -143,6 +178,7 @@ public class IntotheBoardActivity extends AppCompatActivity {
                 tvCtnt.setText(vo.getCtnt());
                 tvWriter.setText(vo.getWriter());
                 tvRDT.setText(vo.getRdt());
+                txlikeNum.setText(vo.getHeart()+"");
             }
 
             @Override
@@ -156,5 +192,33 @@ public class IntotheBoardActivity extends AppCompatActivity {
         Date mDate = new Date(mNow);
         SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return mFormat.format(mDate);
+    }
+    private void clkHeart(int iboard,View v){
+        BoardVO vo = new BoardVO();
+        vo.setIboard(iboard);
+        int i = Integer.parseInt(txlikeNum.getText().toString());
+        switch (v.getId()){
+            case R.id.btnLike:
+                vo.setHeart(++i);
+                break;
+            case R.id.BtnDlike:
+                vo.setHeart(--i);
+                break;
+        }
+        txlikeNum.setText(vo.getHeart()+"");
+
+        RetrofitSV.getConnect().updBoard(vo).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+
+
     }
 }

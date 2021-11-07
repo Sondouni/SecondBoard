@@ -41,12 +41,12 @@
             android:id="@+id/tvCtnt"
             android:layout_width="280dp"
             android:layout_height="409dp"
-            android:textSize="12sp"
             android:layout_marginTop="30dp"
             android:background="@drawable/border2"
+            android:textSize="12sp"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            android:visibility="visible"/>
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/textView11"
@@ -63,13 +63,35 @@
             android:id="@+id/textView9"
             android:layout_width="40dp"
             android:layout_height="20dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="55dp"
             android:background="@drawable/border2"
             android:paddingLeft="5dp"
             android:text="@string/writer"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/tvCtnt"
             app:layout_constraintTop_toBottomOf="@+id/tvCtnt" />
+
+        <TextView
+            android:id="@+id/txlike"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="184dp"
+            android:layout_marginTop="7dp"
+            android:text="@string/like"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCtnt" />
+
+        <TextView
+            android:id="@+id/txlikeNum"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="184dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txlike" />
 
         <TextView
             android:id="@+id/tvWriter"
@@ -94,6 +116,26 @@
             app:layout_constraintTop_toBottomOf="@+id/tvWriter" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLike"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCtnt" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/BtnDlike"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/dislike"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCtnt" />
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnChange"
             android:layout_width="70dp"
             android:layout_height="30dp"
@@ -108,10 +150,10 @@
             android:id="@+id/btnDel"
             android:layout_width="70dp"
             android:layout_height="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/my"
             android:text="@string/Delete"
             android:textSize="10sp"
-            android:background="@color/my"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +228,7 @@
             android:id="@+id/edtextView9"
             android:layout_width="40dp"
             android:layout_height="20dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/border2"
             android:paddingLeft="5dp"
             android:text="@string/writer"
@@ -219,10 +261,10 @@
             android:id="@+id/btnOkay"
             android:layout_width="70dp"
             android:layout_height="30dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/my"
             android:text="@string/okay"
             android:textSize="10sp"
-            android:background="@color/my"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

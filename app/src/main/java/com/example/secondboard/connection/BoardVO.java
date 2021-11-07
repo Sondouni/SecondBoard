@@ -8,6 +8,17 @@ public class BoardVO implements Serializable {
     private String ctnt;
     private String writer;
     private String rdt;
+    private int heart;
+
+    public int getHeart() {
+        return heart;
+    }
+
+    public void setHeart(int heart) {
+        this.heart = heart;
+    }
+
+
 
     public int getIboard() {
         return iboard;
